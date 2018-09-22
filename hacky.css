@@ -1,0 +1,46 @@
+#new {
+	width: 300px;
+	height: 100px;
+	margin-bottom:50px;
+}
+
+.desc {
+	display:none;
+}
+
+#form {
+	display:none;
+}
+
+p {
+	font-weight:bold;
+}
+
+.inc {
+	margin-top: 10px;
+}
+
+ul.bargraph {
+	height: 50px;
+	margin-bottom: 50px
+}
+ 
+ul.bargraph li.green {
+background: #97B546;
+width:0;
+}
+ 
+ul.bargraph li.greenbright {
+background: #36B669;
+width:0;
+}
+ 
+ul.bargraph li.greenblue {
+background: #42BDA5;
+width:0;
+}
+
+ul.bargraph li.xaxis {
+background: url(../images/x-axis.jpg);
+height: 49px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Assignment Racer</title>
+		<link rel="stylesheet" type="text/css" href="hacky.css">
+		<link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+  </head>
+	<body style="text-align:center">
+		<h1>Assignment Racer</h1>
+		<button id="new" onclick="myFunction()">Add a new Assignment</button>
+    <form id="form">
+			Assignment Name: <input type = "text" name = "Name" />
+			<br>
+			<br>
+			Assignment Due Date: <input type = "text" name = "Date" />
+			<br>
+			<br>
+			Assignment Due Time: <input type = "text" name = "Time" />
+			<br>
+			<br>
+		  <input type="submit" value="Submit">
+    </form>
+		<h2 style="line-height: 2">Current Assignments</h2>
+		<p>Assignment 1: Due in 7 days and 8 hrs  <button id="ass" onclick="Assignment1()">Read More</button></p>
+		<p class="desc" id="ass1"	>Current Leader: Evan</p>
+		<ul class="bargraph desc" style="list-style:none; height: 100%" id="ass1g">
+		  <li class="green inc" id="ass1Evan">Evan<p id="numEvan1">0%</p></li>
+			<button class="button" onclick="ass1('EVAN')">Increment</button>
+		  <li class="greenbright inc" id="ass1Garwerd">Garwerd<p id="numGarwerd1">0%</p></li>
+			<button class="button" onclick="ass1('GARWERD')">Increment</button>
+		  <li class="greenblue inc" id="ass1Keller">Keller<p id="numKeller1">0%</p></li>
+			<button class="button" onclick="ass1('KELLER')">Increment</button>
+			<br><button style="margin: 20px;" class="reset" onclick="reset()">RESET</button>
+		</ul>
+		<p>Assignment 2: Due in 10 days and 6 hrs <button id="ass" onclick="Assignment2()">Read More</button></p>
+		<p>Assignment 3: Due in 12 days and 6 hrs <button id="ass" onclick="Assignment3()">Read More</button></p>
+		<p>Assignment 4: Due in 21 days and 6 hrs <button id="ass" onclick="Assignment4()">Read More</button></p>
+
+
+  	<script>
+			function myFunction(){
+				if (document.getElementById("form").style.display == "block"){
+					document.getElementById("form").style.display = "none";
+				}else{
+					document.getElementById("form").style.display = "block";				
+				}
+			}
+			function Assignment1(){
+				if (document.getElementById("ass1").style.display == "block"){
+					document.getElementById("ass1").style.display = "none";
+					document.getElementById("ass1g").style.display = "none";
+				}else{
+					document.getElementById("ass1").style.display = "block";		
+					document.getElementById("ass1g").style.display = "block";		
+				}
+
+				document.getElementById("ass1Evan").style.width = localStorage.getItem("EVAN");
+				document.getElementById("ass1Garwerd").style.width = localStorage.getItem("GARWERD");
+				document.getElementById("ass1Keller").style.width = localStorage.getItem("KELLER");
+				if (localStorage.getItem("EVAN")){
+					var evan = localStorage.getItem("EVAN").replace('px','');
+					document.getElementById("numEvan1").innerHTML = evan/16.5 + "%";
+				}
+				if (localStorage.getItem("KELLER")){
+					var keller = localStorage.getItem("KELLER").replace('px','');
+					document.getElementById("numKeller1").innerHTML = keller/16.5 + "%";
+				}
+				if (localStorage.getItem("GARWERD")){
+					var garwerd = localStorage.getItem("GARWERD").replace('px','');
+					document.getElementById("numGarwerd1").innerHTML = garwerd/16.5 + "%";
+				}
+			}
+			function ass1(x){
+				if (x == "EVAN"){
+					var width = document.getElementById('ass1Evan').offsetWidth;
+					if(width > 1485){
+						width = width - 165;
+					}
+					document.getElementById("numEvan1").innerHTML = String((width+165)/16.5) + "%";
+					document.getElementById("ass1Evan").style.width = String(width+165) + "px";
+				}else if(x == "KELLER"){
+					var width = document.getElementById('ass1Keller').offsetWidth;
+					if(width > 1485){
+						width = width - 165;
+					}
+					document.getElementById("numKeller1").innerHTML = String((width+165)/16.5) + "%";
+					document.getElementById("ass1Keller").style.width = String(width+165) + "px";
+				}else{
+					var width = document.getElementById('ass1Garwerd').offsetWidth;
+					if(width > 1485){
+						width = width - 165;
+					}
+					document.getElementById("numGarwerd1").innerHTML = String((width+165)/16.5) + "%";
+					document.getElementById("ass1Garwerd").style.width = String(width+165) + "px";
+				}
+				localStorage.setItem("EVAN",document.getElementById('ass1Evan').style.width);
+				console.log(localStorage.getItem("EVAN"));
+				
+			}
+			function reset(){
+				var evan = localStorage.getItem("EVAN").replace('px','');
+					document.getElementById("numEvan1").innerHTML = "0%";
+					document.getElementById("numEvan1").innerHTML = String("0%");
+					document.getElementById("ass1Evan").style.width = String(0 + "px");
+	
+			}
+		</script>
+
+
+  </body>
+</html>
